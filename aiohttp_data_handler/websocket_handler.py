@@ -71,7 +71,8 @@ class WebSocketHandler:
         if cmd not in self._data_handler:
             self.logger.error(
                 f'Error: unknown command {cmd}'
-                f' on {self.__class__.__name__}')
+                f' on {self.__class__.__name__}'
+                f' (one of {self._data_handler.keys()})')
             return
         self.logger.info(f'handle {cmd}...')
         return await self._data_handler[cmd](self, data, ws)
